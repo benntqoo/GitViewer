@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">GitViewer</string>
+
+    <!-- dialog -->
+    <string name="dialog_title">提醒</string>
+    <string name="dialog_btn_submit">確定</string>
+    <string name="dialog_btn_cancel">取消</string>
+    <string name="dialog_progress">請稍後&#8230;</string>
 </resources>

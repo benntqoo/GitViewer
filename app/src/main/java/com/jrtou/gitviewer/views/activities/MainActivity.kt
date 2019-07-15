@@ -1,7 +1,8 @@
-package com.jrtou.gitviewer
+package com.jrtou.gitviewer.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jrtou.gitviewer.R
 
 class MainActivity : AppCompatActivity() {
 
