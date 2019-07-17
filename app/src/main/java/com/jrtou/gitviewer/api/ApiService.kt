@@ -11,17 +11,19 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
 class ApiService private constructor() {
-
-    private object Holder {
-        val INSTANCE = ApiService()
-    }
-
     companion object {
-        private const val API_URL = ""
+        const val API_USER = "users/"
+
+        private const val API_URL = "https://api.github.com/"
         val instance by lazy { Holder.INSTANCE }
 
 
         private val TAG: String = ApiService::class.java.simpleName
+    }
+
+
+    private object Holder {
+        val INSTANCE = ApiService()
     }
 
     lateinit var service: ApiInterface

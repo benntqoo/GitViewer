@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.jrtou.gitviewer.R
 
+/**
+ * 客製化 api 請求錯誤回調
+ */
 enum class ApiResult(val code: String, @param: StringRes private val messageId: Int) {
-    //根据实际情况进行增删
     SUCCESS("000", R.string.api_code_200),
     BAD_GATEWAY("502", R.string.api_code_52),
     NOT_FOUND("404", R.string.api_code_404),

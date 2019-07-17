@@ -1,6 +1,7 @@
 package com.jrtou.gitviewer.helpers
 
 import android.Manifest.permission.WRITE_SETTINGS
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.KeyguardManager
 import android.content.Context
@@ -24,6 +25,7 @@ object ScreenHelper {
      *
      * @return the width of screen, in pixel
      */
+    @SuppressLint("ObsoleteSdkInt")
     fun getScreenWidth(@NonNull activity: Activity): Int {
         val windowManager: WindowManager = activity.application.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val point: Point = Point()
@@ -39,6 +41,7 @@ object ScreenHelper {
      * @return the height of screen, in pixel
      */
 
+    @SuppressLint("ObsoleteSdkInt")
     fun ScreenHeight(@NonNull activity: Activity): Int {
         val windowManager: WindowManager = activity.application.getSystemService(Context.WINDOW_SERVICE) as WindowManager
         val point: Point = Point()
@@ -258,6 +261,7 @@ object ScreenHelper {
     /**
      * navigation bar 是否顯示
      */
+    @SuppressLint("ObsoleteSdkInt")
     fun isNavigationBarShow(activity: Activity): Boolean {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             val display = activity.windowManager.defaultDisplay

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="api_code_200">请求成功</string>
-    <string name="api_code_404">请求失败</string>
+    <string name="api_code_404">Not Found</string>
 
     <string name="api_code_52">BAD_GATEWAY</string>
     <string name="api_other_not_found">NOT_FOUND</string>

@@ -1,5 +1,6 @@
 package com.jrtou.gitviewer.helpers
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.view_api_progress.view.*
 
 
 object DialogHelper {
+    @SuppressLint("InflateParams")
     fun getApiWaitingDialog(context: Context): AlertDialog? {
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view = inflater.inflate(R.layout.view_api_progress, null)
@@ -99,7 +101,6 @@ object DialogHelper {
                         )
                     }
                 }
-            })
-            .show()
+            }).show()
     }
 }
