@@ -51,9 +51,9 @@ android {
         enabled = true
     }
 
-    kapt {
-        generateStubs = true //room 使用生成文件
-    }
+//    kapt {
+//        generateStubs = true //room 使用生成文件
+//    }
 }
 
 dependencies {
@@ -71,7 +71,8 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     //viewModel and liveData
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:$live_data_version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$live_data_version"
 
     //room
     implementation "android.arch.persistence.room:runtime:$room_version"
