@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jrtou.gitviewer.R
@@ -53,7 +54,7 @@ class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
     private fun getPop() {
         mActivity?.let { activity ->
             ApiService.instance.trendService.getPopRepo()
-                .compose(ApiManager.fragmentNetWorkCompose(this, FragmentEvent.PAUSE))
+                .compose(ApiService.ComposeUtil.fragmentNetWorkCompose(this, FragmentEvent.PAUSE))
                 .subscribe(object : ApiResponse<MutableList<GitHubData.TrendItem>>(activity) {
                     override fun success(data: MutableList<GitHubData.TrendItem>, result: ApiResult.Model) {
                         adapter.items.clear()
@@ -61,6 +62,7 @@ class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
                     }
 
                     override fun failure(statusCode: String, model: ApiResult.Model) {
+                        Toast.makeText(activity, "資料獲取異常", Toast.LENGTH_SHORT).show()
                     }
                 })
         }
@@ -69,7 +71,7 @@ class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
     private fun getRepo() {
         mActivity?.let { activity ->
             ApiService.instance.service.searchRepoByKeyWord(" ")
-                .compose(ApiManager.fragmentNetWorkCompose(this, FragmentEvent.PAUSE))
+                .compose(ApiService.ComposeUtil.fragmentNetWorkCompose(this, FragmentEvent.PAUSE))
                 .subscribe(object : ApiResponse<GitHubData.Repo>(activity) {
                     override fun success(data: GitHubData.Repo, result: ApiResult.Model) {
 
