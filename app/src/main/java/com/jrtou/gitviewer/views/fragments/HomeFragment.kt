@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jrtou.gitviewer.R
 import com.jrtou.gitviewer.api.*
+import com.jrtou.gitviewer.databases.DatabaseHelper
+import com.jrtou.gitviewer.framework.models.TrendRepository
 import com.jrtou.gitviewer.views.activities.MainActivity
 import com.jrtou.gitviewer.views.adapters.MainAdapter
 import com.trello.rxlifecycle2.android.FragmentEvent
 import kotlinx.android.synthetic.main.fragment_home.*
+import okhttp3.internal.lockAndWaitNanos
 
 class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
     companion object {
@@ -33,6 +36,8 @@ class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
     override fun onViewSetting(activity: MainActivity) {
         rvMain.layoutManager = LinearLayoutManager(activity)
         rvMain.adapter = adapter
+
+        DatabaseHelper.instance.getTrendDao()
     }
 
     override fun onRenderView(activity: MainActivity, savedInstanceState: Bundle?) {
@@ -69,6 +74,7 @@ class HomeFragment : RxSupportSHAbstractFragment<MainActivity>() {
     }
 
     private fun getRepo() {
+        TrendRepository.SINGLETON.getTrend()
         mActivity?.let { activity ->
             ApiService.instance.service.searchRepoByKeyWord(" ")
                 .compose(ApiService.ComposeUtil.fragmentNetWorkCompose(this, FragmentEvent.PAUSE))
